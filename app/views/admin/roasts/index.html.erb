@@ -2,7 +2,9 @@
 
 <h1>List of All Roasts</h1>
 
-<table>
+<%= link_to 'Add New Roast', new_admin_roast_path, {:class => "btn btn btn-block"} %>
+
+<table class="table table-hover">
   <thead>
     <tr>
       <th>Company</th>
@@ -12,7 +14,7 @@
     </tr>
   </thead>
 
-  <tbody class="table table">
+  <tbody>
     <% @admin_roasts.each do |admin_roast| %>
       <tr>
         <td><%= admin_roast.company %></td>
@@ -27,5 +29,3 @@
 </table>
 
 <br>
-
-<%= link_to 'New Admin Roast', new_admin_roast_path %>
