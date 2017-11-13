@@ -17,13 +17,13 @@
   </thead>
 
   <tbody>
-    <% @admin_roasts.each do |admin_roast| %>
+    <% @roasts.each do |roast| %>
       <tr>
-        <td><%= admin_roast.company %></td>
-        <td><%= admin_roast.roastName %></td>
-        <td><%= admin_roast.description %></td>
-        <td><%= link_to 'Edit', edit_admin_roast_path(admin_roast) %></td>
-        <td><%= link_to 'Delete', admin_roast, method: :delete, data: { confirm: 'Are you sure you want to delete this roast?' } %></td>
+        <td><%= roast.company %></td>
+        <td><%= roast.roastName %></td>
+        <td><%= roast.description %></td>
+        <td><%= link_to 'Edit', edit_admin_roast_path(roast) %></td>
+        <td><%= link_to 'Delete', admin_roast_path(roast), method: :delete, data: { confirm: 'Are you sure you want to delete this roast?' } %></td>
       </tr>
     <% end %>
   </tbody>

@@ -4,7 +4,7 @@ class Admin::RoastsController < ApplicationController
   # GET /admin/roasts
   # GET /admin/roasts.json
   def index
-    @admin_roasts = Admin::Roast.all
+    @roasts = Roast.all
   end
 
   # GET /admin/roasts/1
@@ -14,7 +14,7 @@ class Admin::RoastsController < ApplicationController
 
   # GET /admin/roasts/new
   def new
-    @admin_roast = Admin::Roast.new
+    @roast = Roast.new
   end
 
   # GET /admin/roasts/1/edit
@@ -24,15 +24,15 @@ class Admin::RoastsController < ApplicationController
   # POST /admin/roasts
   # POST /admin/roasts.json
   def create
-    @admin_roast = Admin::Roast.new(admin_roast_params)
+    @roast = Roast.new(admin_roast_params)
 
     respond_to do |format|
-      if @admin_roast.save
-        format.html { redirect_to @admin_roast, notice: 'Roast was successfully created.' }
-        format.json { render :show, status: :created, location: @admin_roast }
+      if @roast.save
+        format.html { redirect_to admin_roasts_path, notice: 'Roast was successfully created.' }
+        format.json { render :show, status: :created, location: @roast }
       else
         format.html { render :new }
-        format.json { render json: @admin_roast.errors, status: :unprocessable_entity }
+        format.json { render json: @roast.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -41,12 +41,12 @@ class Admin::RoastsController < ApplicationController
   # PATCH/PUT /admin/roasts/1.json
   def update
     respond_to do |format|
-      if @admin_roast.update(admin_roast_params)
-        format.html { redirect_to @admin_roast, notice: 'Roast was successfully updated.' }
-        format.json { render :show, status: :ok, location: @admin_roast }
+      if @roast.update(admin_roast_params)
+        format.html { redirect_to admin_roasts_path, notice: 'Roast was successfully updated.' }
+        format.json { render :show, status: :ok, location: @roast }
       else
         format.html { render :edit }
-        format.json { render json: @admin_roast.errors, status: :unprocessable_entity }
+        format.json { render json: @roast.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -54,7 +54,7 @@ class Admin::RoastsController < ApplicationController
   # DELETE /admin/roasts/1
   # DELETE /admin/roasts/1.json
   def destroy
-    @admin_roast.destroy
+    @roast.destroy
     respond_to do |format|
       format.html { redirect_to admin_roasts_url, notice: 'Roast was successfully destroyed.' }
       format.json { head :no_content }
@@ -64,11 +64,11 @@ class Admin::RoastsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_admin_roast
-      @admin_roast = Admin::Roast.find(params[:id])
+      @roast = Roast.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def admin_roast_params
-      params.require(:admin_roast).permit(:company, :roastName, :description)
+      params.require(:roast).permit(:company, :roastName, :description)
     end
 end

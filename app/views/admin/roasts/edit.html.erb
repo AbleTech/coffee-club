@@ -1,6 +1,5 @@
-<h1>Editing Admin Roast</h1>
+<h1>Editing Roast</h1>
 
-<%= render 'form', admin_roast: @admin_roast %>
+<%= render 'form', roast: @roast, url_path: admin_roast_path%>
 
-<%= link_to 'Show', @admin_roast, :class => "btn btn btn-block" %>
 <%= link_to 'Back', admin_roasts_path, :class => "btn btn btn-block"  %>

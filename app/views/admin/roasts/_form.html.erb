@@ -1,10 +1,10 @@
-<%= form_with(model: admin_roast, local: true) do |form| %>
-  <% if admin_roast.errors.any? %>
+<%= form_with(url: url_path, model: roast, local: true) do |form| %>
+  <% if roast.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(admin_roast.errors.count, "error") %> prohibited this admin_roast from being saved:</h2>
+      <h2><%= pluralize(roast.errors.count, "error") %> prohibited this roast from being saved:</h2>
 
       <ul>
-      <% admin_roast.errors.full_messages.each do |message| %>
+      <% roast.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
@@ -13,17 +13,17 @@
 
   <div class="field form-group">
     <%= form.label :company, :class => "form-label" %>
-    <%= form.text_field :company, id: :admin_roast_company, :class => "form-control", :placeholder => "e.g. People's"%>
+    <%= form.text_field :company, id: :roast_company, :class => "form-control", :placeholder => "e.g. People's"%>
   </div>
 
   <div class="field">
     <%= form.label :roastName, :class => "form-label" %>
-    <%= form.text_field :roastName, id: :admin_roast_roastName, :class => "form-control" %>
+    <%= form.text_field :roastName, id: :roast_roastName, :class => "form-control" %>
   </div>
 
   <div class="field">
     <%= form.label :description, :class => "form-label" %>
-    <%= form.text_area :description, id: :admin_roast_description, :class => "form-control", :rows => "10" %>
+    <%= form.text_area :description, id: :roast_description, :class => "form-control", :rows => "10" %>
   </div>
 
   <div class="actions">
