@@ -2,7 +2,7 @@ require 'test_helper'
 
 class Admin::RoastsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @admin_roast = admin_roasts(:one)
+    @admin_roast = admin_roasts(:people1)
   end
 
   test "should get index" do
