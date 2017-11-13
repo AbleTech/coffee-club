@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>List of All Roasts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Company</th>
+      <th>Roastname</th>
+      <th>Description</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody class="table table">
+    <% @admin_roasts.each do |admin_roast| %>
+      <tr>
+        <td><%= admin_roast.company %></td>
+        <td><%= admin_roast.roastName %></td>
+        <td><%= admin_roast.description %></td>
+        <td><%= link_to 'Show', admin_roast %></td>
+        <td><%= link_to 'Edit', edit_admin_roast_path(admin_roast) %></td>
+        <td><%= link_to 'Destroy', admin_roast, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Admin Roast', new_admin_roast_path %>
