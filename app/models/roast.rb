@@ -1,3 +1,3 @@
 class Roast < ApplicationRecord
-  validates :company, :roastName, :description, presence: true
+  validates :company, :name, :description, presence: true
 end

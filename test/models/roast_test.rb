@@ -8,7 +8,7 @@ class RoastTest < ActiveSupport::TestCase
     roast = Roast.new
     assert roast.invalid?
     assert roast.errors[:company].any?
-    assert roast.errors[:roastName].any?
+    assert roast.errors[:name].any?
     assert roast.errors[:description].any?
   end
 

@@ -15,9 +15,9 @@ class Admin::RoastsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should create admin_roast" do
+  test "should create roast" do
     assert_difference('Roast.count') do
-      post admin_roasts_url, params: { roast: { company: @roast.company, description: @roast.description, roastName: @roast.roastName } }
+      post admin_roasts_url, params: { roast: { company: @roast.company, description: @roast.description, name: @roast.name } }
     end
 
     assert_redirected_to admin_roasts_url
@@ -28,12 +28,12 @@ class Admin::RoastsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should update admin_roast" do
-    patch admin_roast_url(@roast), params: { roast: { company: @roast.company, description: @roast.description, roastName: @roast.roastName } }
+  test "should update roast" do
+    patch admin_roast_url(@roast), params: { roast: { company: @roast.company, description: @roast.description, name: @roast.name } }
     assert_redirected_to admin_roasts_url
   end
 
-  test "should destroy admin_roast" do
+  test "should destroy roast" do
     assert_difference('Roast.count', -1) do
       delete admin_roast_url(@roast)
     end

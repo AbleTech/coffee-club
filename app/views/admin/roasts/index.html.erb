@@ -20,7 +20,7 @@
     <% @roasts.each do |roast| %>
       <tr>
         <td><%= roast.company %></td>
-        <td><%= roast.roastName %></td>
+        <td><%= roast.name %></td>
         <td><%= roast.description %></td>
         <td><%= link_to 'Edit', edit_admin_roast_path(roast) %></td>
         <td><%= link_to 'Delete', admin_roast_path(roast), method: :delete, data: { confirm: 'Are you sure you want to delete this roast?' } %></td>

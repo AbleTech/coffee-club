@@ -64,6 +64,6 @@ class Admin::RoastsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def admin_roast_params
-      params.require(:roast).permit(:company, :roastName, :description)
+      params.require(:roast).permit(:company, :name, :description)
     end
 end
