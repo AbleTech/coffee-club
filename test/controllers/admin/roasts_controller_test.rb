@@ -5,6 +5,7 @@ class Admin::RoastsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @roast = roasts(:roast1)
     @header = {"Authorization" => ActionController::HttpAuthentication::Basic.encode_credentials(ENV["ADMIN_USERNAME"], ENV["ADMIN_PASSWORD"])}
+    @roast_params = { roast: { company: @roast.company, description: @roast.description, roastName: @roast.roastName } }
   end
 
   test "should get index" do
@@ -25,9 +26,8 @@ class Admin::RoastsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create roast" do
     assert_difference('Roast.count') do
-      post admin_roasts_url, params: { roast: { company: @roast.company, description: @roast.description, name: @roast.name } }
+      post admin_roasts_url, params: @roast_params, headers: @header
     end
-
     assert_redirected_to admin_roasts_url
   end
 
@@ -37,11 +37,10 @@ class Admin::RoastsControllerTest < ActionDispatch::IntegrationTest
   end
 
 
-  test "should not create admin_roast - not authenticated" do
+  test "should not create roast - not authenticated" do
     assert_no_difference('Roast.count') do
-      post admin_roasts_url, params: { roast: { company: @roast.company, description: @roast.description, roastName: @roast.roastName } }
+      post admin_roasts_url, params: @roast_params
     end
-
     assert_response 401 #unauthorised
   end
 
@@ -55,31 +54,27 @@ class Admin::RoastsControllerTest < ActionDispatch::IntegrationTest
     assert_response 401 #unauthorised
   end
 
-  test "should update admin_roast" do
-    patch admin_roast_url(@roast), params: { roast: { company: @roast.company, description: @roast.description, roastName: @roast.roastName } }, headers: @header
+  test "should update roast" do
+    patch admin_roast_url(@roast), params: @roast_params, headers: @header
     assert_redirected_to admin_roasts_url
   end
 
-  test "should not update admin_roast - not authenticated" do
-    patch admin_roast_url(@roast), params: { roast: { company: @roast.company, description: @roast.description, roastName: @roast.roastName } }
+  test "should not update roast - not authenticated" do
+    patch admin_roast_url(@roast), params: @roast_params
     assert_response 401 #unauthorised
   end
 
-  test "should destroy admin_roast" do
+  test "should destroy roast" do
     assert_difference('Roast.count', -1) do
       delete admin_roast_url(@roast), headers: @header
     end
-
     assert_redirected_to admin_roasts_url
   end
 
-  test "should not destroy admin_roast" do
+  test "should not destroy roast" do
     assert_no_difference('Roast.count') do
       delete admin_roast_url(@roast)
     end
-
-    assert_response 401
+    assert_response 401 #unauthorised
   end
-
-
 end
