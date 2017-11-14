@@ -7,11 +7,6 @@ class Admin::RoastsController < ApplicationController
     @roasts = Roast.all
   end
 
-  # GET /admin/roasts/1
-  # GET /admin/roasts/1.json
-  def show
-  end
-
   # GET /admin/roasts/new
   def new
     @roast = Roast.new

@@ -23,11 +23,6 @@ class Admin::RoastsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to admin_roasts_url
   end
 
-  test "should show admin_roast" do
-    get admin_roast_url(@roast)
-    assert_response :success
-  end
-
   test "should get edit" do
     get edit_admin_roast_url(@roast)
     assert_response :success
