@@ -1,0 +1,32 @@
+<%= form_with(url: url_path, model: roast, local: true) do |form| %>
+  <% if roast.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(roast.errors.count, "error") %> prohibited this roast from being saved:</h2>
+
+      <ul>
+      <% roast.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field form-group">
+    <%= form.label :company, :class => "form-label" %>
+    <%= form.text_field :company, id: :roast_company, :class => "form-control", :placeholder => "e.g. People's"%>
+  </div>
+
+  <div class="field">
+    <%= form.label :name, :class => "form-label" %>
+    <%= form.text_field :name, id: :name, :class => "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description, :class => "form-label" %>
+    <%= form.text_area :description, id: :roast_description, :class => "form-control", :rows => "10" %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Submit", :class => "btn btn-submit btn-block"%>
+  </div>
+<% end %>
