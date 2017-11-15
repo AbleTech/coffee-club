@@ -2,7 +2,6 @@ class Admin::RoastsController < ApplicationController
   before_action :set_admin_roast, only: [:show, :edit, :update, :destroy]
 
   # GET /admin/roasts
-  # GET /admin/roasts.json
   def index
     @roasts = Roast.all
   end
@@ -17,43 +16,29 @@ class Admin::RoastsController < ApplicationController
   end
 
   # POST /admin/roasts
-  # POST /admin/roasts.json
   def create
     @roast = Roast.new(admin_roast_params)
 
-    respond_to do |format|
-      if @roast.save
-        format.html { redirect_to admin_roasts_path, notice: 'Roast was successfully created.' }
-        format.json { render :show, status: :created, location: @roast }
-      else
-        format.html { render :new }
-        format.json { render json: @roast.errors, status: :unprocessable_entity }
-      end
+    if @roast.save
+      redirect_to admin_roasts_path, notice: 'Roast was successfully created.'
+    else
+      render :new
     end
   end
 
   # PATCH/PUT /admin/roasts/1
-  # PATCH/PUT /admin/roasts/1.json
   def update
-    respond_to do |format|
-      if @roast.update(admin_roast_params)
-        format.html { redirect_to admin_roasts_path, notice: 'Roast was successfully updated.' }
-        format.json { render :show, status: :ok, location: @roast }
-      else
-        format.html { render :edit }
-        format.json { render json: @roast.errors, status: :unprocessable_entity }
-      end
+    if @roast.update(admin_roast_params)
+      redirect_to admin_roasts_path, notice: 'Roast was successfully updated.'
+    else
+      render :edit
     end
   end
 
   # DELETE /admin/roasts/1
-  # DELETE /admin/roasts/1.json
   def destroy
     @roast.destroy
-    respond_to do |format|
-      format.html { redirect_to admin_roasts_url, notice: 'Roast was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to admin_roasts_url, notice: 'Roast was successfully destroyed.'
   end
 
   private

@@ -1,16 +1,16 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-people1:
+roast1:
   company: People's
   name: Don Wilfredo Espresso
   description: Our flagship blend is complex, a full bodied flavour juggernaught with chocolate sweetness and creamy caramel overtones. The 'Don' is roasted for espresso but also works well as a full-bodied plunger.
 
-people2:
+roast2:
   company: People's
   name: Colombia Popayan
   description: This washed coffee has a lovely upfront red apple sweetness with tropical overtones, matched with a raw sugar sweetness to form a rich complex coffee. The body of this coffee is clean, silky and full while still maintaining a pleasant apple acidity. This is a crowd pleaser coffee.
 
-laffare1:
+tairora:
   company: Cafe L'Affare
   name: Roasters' Cup - PNG Tairora
   description: The Roasters’ Cup is the epitome of the roasters’ craft, sourced from some of the world’s most interesting coffee plantations and roasted at our Auckland and Wellington cafes in small-batch roasters. These coffees are roasted light to medium by our roasters to heighten the unique and special characteristics that the varietal and location bring.
