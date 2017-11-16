@@ -4,7 +4,7 @@ class Admin::BatchesController < ApplicationController
   def new
     @batch = Batch.new
     @roast = Roast.find(params[:roast])
-    @batch.roast = Roast.find(params[:roast])
+    @batch.roast = @roast
   end
 
   def create
@@ -28,7 +28,7 @@ class Admin::BatchesController < ApplicationController
   end
 
   def destroy
-    roast = @batch.roast_id
+    roast = @batch.roast
     @batch.destroy
     redirect_to admin_roast_url(roast), notice: 'Batch was successfully destroyed.'
   end
