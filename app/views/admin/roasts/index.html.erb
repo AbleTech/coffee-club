@@ -13,7 +13,7 @@
       <th>Company</th>
       <th>Roast Name</th>
       <th>Description</th>
-      <th colspan="3"></th>
+      <th colspan="4"></th>
     </tr>
   </thead>
 
@@ -23,7 +23,8 @@
         <td><%= roast.company %></td>
         <td><%= roast.name %></td>
         <td><%= roast.description %></td>
-        <td><%= link_to 'Add/View Batches', admin_roast_path(roast) %></td>
+        <td><%= link_to 'Add Batch', new_admin_batch_path(:roast => roast) %></td>
+        <td><%= link_to 'View Batches', admin_roast_path(roast) %></td>
         <td><%= link_to 'Edit', edit_admin_roast_path(roast) %></td>
         <td><%= link_to 'Delete', admin_roast_path(roast), method: :delete, data: { confirm: 'Are you sure you want to delete this roast and any associated batches?' } %></td>
       </tr>

@@ -1,5 +1,5 @@
 class Admin::BatchesController < ApplicationController
-  #before_action :set_admin_batch, only: [:show, :edit, :update, :destroy]
+  before_action :set_admin_batch, only: [:show, :edit, :update, :destroy]
 
   def new
     @batch = Batch.new
@@ -14,6 +14,23 @@ class Admin::BatchesController < ApplicationController
     else
       render :new
     end
+  end
+
+  def edit
+  end
+
+  def update
+    if @batch.update(admin_batch_params)
+      redirect_to admin_roast_path(@batch.roast_id), notice: 'Batch was successfully updated.'
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    roast = @batch.roast_id
+    @batch.destroy
+    redirect_to admin_roast_url(roast), notice: 'Batch was successfully destroyed.'
   end
 
   private

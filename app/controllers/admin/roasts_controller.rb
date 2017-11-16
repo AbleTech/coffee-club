@@ -1,5 +1,4 @@
 class Admin::RoastsController < ApplicationController
-  #http_basic_authenticate_with name: ENV['ADMIN_USERNAME'], password: ENV['ADMIN_PASSWORD']
   before_action :set_admin_roast, only: [:show, :edit, :update, :destroy]
 
   # GET /admin/roasts

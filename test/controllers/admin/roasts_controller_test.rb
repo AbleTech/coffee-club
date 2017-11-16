@@ -9,7 +9,7 @@ class Admin::RoastsControllerTest < ActionDispatch::IntegrationTest
     @roast_params = { roast: { company: @roast.company, description: @roast.description, name: @roast.name } }
   end
 
-  test "authentication requests" do
+  test "roast authentication requests" do
     check_for_authentication([
       Request.new(:get, admin_roasts_url),
       Request.new(:get, new_admin_roast_url),

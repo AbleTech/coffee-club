@@ -20,8 +20,8 @@
       <td><%= batch.start_date.strftime("%a %d %b %Y") %></td>
       <td><%= number_to_currency batch.get_cost_per_gram %></td>
       <td><%= batch.amount_purchased %></td>
-      <td>EDIT</td>
-      <td>DELETE</td>
+      <td><%= link_to 'Edit', edit_admin_batch_path(batch) %></td>
+      <td><%= link_to 'Delete', admin_batch_path(batch), method: :delete, data: { confirm: 'Are you sure you want to delete this batch?' } %></td>
     </tr>
   <% end %>
 </table>
