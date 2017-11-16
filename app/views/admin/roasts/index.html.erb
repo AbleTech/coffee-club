@@ -1,5 +1,6 @@
-<p id="notice"><%= notice %></p>
 
+<p id="notice"><%= notice %></p>
+<p id="alert"><%= alert %></p>
 <h1>List of All Roasts</h1>
 
 <%= link_to new_admin_roast_path, {:class => "btn btn btn-block"} do %>
@@ -12,7 +13,7 @@
       <th>Company</th>
       <th>Roast Name</th>
       <th>Description</th>
-      <th colspan="2"></th>
+      <th colspan="3"></th>
     </tr>
   </thead>
 
@@ -22,8 +23,9 @@
         <td><%= roast.company %></td>
         <td><%= roast.name %></td>
         <td><%= roast.description %></td>
+        <td><%= link_to 'Add/View Batches', admin_roast_path(roast) %></td>
         <td><%= link_to 'Edit', edit_admin_roast_path(roast) %></td>
-        <td><%= link_to 'Delete', admin_roast_path(roast), method: :delete, data: { confirm: 'Are you sure you want to delete this roast?' } %></td>
+        <td><%= link_to 'Delete', admin_roast_path(roast), method: :delete, data: { confirm: 'Are you sure you want to delete this roast and any associated batches?' } %></td>
       </tr>
     <% end %>
   </tbody>

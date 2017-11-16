@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+<h3><strong><%= @roast.company %></strong> <%= @roast.name %></h3>
+
+<h4>About</h4>
+<p><%= @roast.description %></p>
+
+<% if @roast.batches.empty? %>
+<p>No batches have been created</p>
+<% else %>
+<table class="table table-hover">
+  <!-- Display batches -->
+  <tr>
+    <th>Start Date</th>
+    <th>Cost per Gram</th>
+    <th>Amount Purchased (g)</th>
+    <th colspan="2"></th>
+  </tr>
+  <% @roast.batches.order('start_date DESC').each do |batch| %>
+    <tr>
+      <td><%= batch.start_date.strftime("%a %d %b %Y") %></td>
+      <td><%= number_to_currency batch.get_cost_per_gram %></td>
+      <td><%= batch.amount_purchased %></td>
+      <td>EDIT</td>
+      <td>DELETE</td>
+    </tr>
+  <% end %>
+</table>
+<% end %>
+
+
+<%= link_to new_admin_batch_path(:roast => @roast), {:class => "btn btn btn-block"} do %>
+  <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Add Batch
+<% end %>
+<%= link_to admin_roasts_path, {:class => "btn btn btn-block"} do %>
+  Back
+<% end %>

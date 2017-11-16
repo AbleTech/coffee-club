@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+batch1:
+  start_date: 2017-11-15 15:02:11
+  cost: 9.99
+  amount_purchased: 100
+  roast: roast1
+
+batch2:
+  start_date: 2017-11-15 15:02:11
+  cost: 4.99
+  amount_purchased: 1
+  roast: roast2

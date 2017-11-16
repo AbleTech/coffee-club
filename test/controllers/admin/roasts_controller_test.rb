@@ -1,6 +1,5 @@
 require 'test_helper'
 
-
 class Admin::RoastsControllerTest < ActionDispatch::IntegrationTest
 
   setup do
