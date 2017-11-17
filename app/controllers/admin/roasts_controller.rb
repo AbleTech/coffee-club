@@ -1,9 +1,10 @@
 class Admin::RoastsController < Admin::ApplicationController
+
   before_action :set_admin_roast, only: [:show, :edit, :update, :destroy]
 
   # GET /admin/roasts
   def index
-    @roasts = Roast.all
+    @roasts = Roast.includes(:batches).all
   end
 
   # GET /admin/roasts/new
@@ -18,7 +19,6 @@ class Admin::RoastsController < Admin::ApplicationController
   # POST /admin/roasts
   def create
     @roast = Roast.new(admin_roast_params)
-
     if @roast.save
       redirect_to admin_roasts_path, notice: 'Roast was successfully created.'
     else

@@ -16,12 +16,13 @@
     <th colspan="2"></th>
   </tr>
   <% @roast.batches.order('start_date DESC').each do |batch| %>
+    <% batch_presenter = BatchPresenter.new(batch)%>
     <tr>
-      <td><%= batch.start_date.strftime("%a %d %b %Y") %></td>
-      <td><%= number_to_currency batch.get_cost_per_gram %></td>
-      <td><%= batch.amount_purchased %></td>
-      <td><%= link_to 'Edit', edit_admin_batch_path(batch) %></td>
-      <td><%= link_to 'Delete', admin_batch_path(batch), method: :delete, data: { confirm: 'Are you sure you want to delete this batch?' } %></td>
+      <td><%= batch_presenter.start_date %></td>
+      <td><%= batch_presenter.cost_per_gram %></td>
+      <td><%= batch_presenter.amount_purchased %></td>
+      <td><%= link_to 'Edit', edit_admin_batch_path(batch_presenter) %></td>
+      <td><%= link_to 'Delete', admin_batch_path(batch_presenter), method: :delete, data: { confirm: 'Are you sure you want to delete this batch?' } %></td>
     </tr>
   <% end %>
 </table>

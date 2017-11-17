@@ -7,10 +7,6 @@ class Batch < ApplicationRecord
   validate :date_must_not_be_in_future
   validates :start_date, uniqueness: {:message => "is already used by another batch"}
 
-  def get_cost_per_gram
-    cost/amount_purchased
-  end
-
   private
 
   def date_must_not_be_in_future
