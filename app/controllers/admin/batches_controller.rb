@@ -48,5 +48,4 @@ class Admin::BatchesController < Admin::ApplicationController
   def get_all_roasts
     @roasts = Roast.all
   end
-
 end

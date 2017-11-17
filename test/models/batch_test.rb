@@ -1,26 +1,9 @@
 require 'test_helper'
-#
-# class BatchTest < ActiveSupport::TestCase
-#   describe Batch do
-#     let(:roast) { roasts(:roast1) }
-#
-#     describe 'start_date' do
-#       it 'is allowed to be today' do
-#         batch = Batch.new({:start_date => Date.today, :amount_purchased => 22, :cost => 4.5, :roast => roast})
-#         assert batch.valid?
-#       end
-#
-#     end
-#
-#   end
-# end
 
 class BatchTest < ActiveSupport::TestCase
-
   setup do
     @roast = roasts(:roast1)
     @valid_params = {:start_date => Date.today, :amount_purchased => 22, :cost => 4.5, :roast => @roast}
-
     @batch = Batch.new(@valid_params)
   end
 

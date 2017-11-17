@@ -1,5 +1,4 @@
 class Admin::RoastsController < Admin::ApplicationController
-
   before_action :set_admin_roast, only: [:show, :edit, :update, :destroy]
 
   # GET /admin/roasts
