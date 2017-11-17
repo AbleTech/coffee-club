@@ -1,32 +1,39 @@
 <%= form_with(url: url_path, model: batch, local: true) do |form| %>
-  <% if batch.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(batch.errors.count, "error") %> prohibited this batch from being saved:</h2>
+<% if batch.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(batch.errors.count, "error") %> prohibited this batch from being saved:</h2>
 
-      <ul>
-      <% batch.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <ul>
+    <% batch.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
 
-  <div class="field form-group">
-    <%= form.label :start_date, :class => "form-label" %>
-    <%= form.date_field :start_date, id: :batch_start_date, :class => "form-control", :value => Date.today%>
-  </div>
 
-  <div class="field">
-    <%= form.label :cost, :class => "form-label"%><br>
-    <%= form.number_field :cost, id: :batch_cost, :class => "form-control", :step => 0.01%>
-  </div>
+<div class="field form-group">
+  <%= form.label :roast, :class => "form-label" %>
+  <%= form.select :roast, options_for_select(format_roast_options(@roasts)), {id: "batch_roast", prompt: "Select Roast"}, {class: "form-control"}%>
+</div>
 
-  <div class="field">
-    <%= form.label :amount_purchased, "Quantity (g)", :class => "form-label" %>
-    <%= form.number_field :amount_purchased, id: :batch_amount_purchased, :class => "form-control"%>
-  </div>
 
-  <div class="actions">
-    <%= form.submit "Submit", :class => "btn btn-submit btn-block"%>
-  </div>
+<div class="field form-group">
+  <%= form.label :start_date, :class => "form-label" %>
+  <%= form.date_field :start_date, id: :batch_start_date, :class => "form-control", :value => Date.today%>
+</div>
+
+<div class="field">
+  <%= form.label :cost, :class => "form-label"%><br>
+  <%= form.number_field :cost, id: :batch_cost, :class => "form-control", :step => 0.01%>
+</div>
+
+<div class="field">
+  <%= form.label :amount_purchased, "Quantity (g)", :class => "form-label" %>
+  <%= form.number_field :amount_purchased, id: :batch_amount_purchased, :class => "form-control"%>
+</div>
+
+<div class="actions">
+  <%= form.submit "Submit", :class => "btn btn-submit btn-block"%>
+</div>
 <% end %>

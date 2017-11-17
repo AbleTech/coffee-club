@@ -41,8 +41,8 @@ class UserStoriesTest < ActionDispatch::IntegrationTest
     assert_difference('Batch.count') do
       post admin_batches_url, params: { batch: { start_date: "2017-11-15 00:00:00", cost: 4.99, amount_purchased: 1, roast_id: @roast.id} }, headers: @header
     end
-    assert_redirected_to admin_roast_url(@batch.roast_id)
-    assert_equal @batch.roast_id, @roast.id
+    assert_redirected_to admin_roast_url(@batch.roast)
+    assert_equal @batch.roast, @roast
 
     # check the roasts page displays what we expect
     get admin_roast_url(@roast), headers: @header

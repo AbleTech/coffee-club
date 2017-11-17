@@ -24,7 +24,7 @@ class BatchTest < ActiveSupport::TestCase
     batch = Batch.new
     batch.amount_purchased = 200
     batch.cost = 22
-    batch.roast_id = @roast.id
+    batch.roast = @roast
     batch.start_date = Date.today
     assert batch.valid?
     batch.start_date = 5.days.ago
@@ -35,7 +35,7 @@ class BatchTest < ActiveSupport::TestCase
     batch = Batch.new
     batch.amount_purchased = 200
     batch.cost = 22
-    batch.roast_id = @roast.id
+    batch.roast = @roast
     batch.start_date = 2.days.from_now
     assert batch.invalid?
   end
@@ -44,7 +44,7 @@ class BatchTest < ActiveSupport::TestCase
     batch = Batch.new
     batch.amount_purchased = -4
     batch.cost = 22
-    batch.roast_id = @roast.id
+    batch.roast = @roast
     batch.start_date = 2.days.ago
     assert batch.invalid?
   end
@@ -53,7 +53,7 @@ class BatchTest < ActiveSupport::TestCase
     batch = Batch.new
     batch.amount_purchased = 22
     batch.cost = -11
-    batch.roast_id = @roast.id
+    batch.roast = @roast
     batch.start_date = 2.days.ago
     assert batch.invalid?
   end
@@ -62,7 +62,7 @@ class BatchTest < ActiveSupport::TestCase
     batch = Batch.new
     batch.amount_purchased = 22
     batch.cost = 0
-    batch.roast_id = @roast.id
+    batch.roast = @roast
     batch.start_date = 2.days.ago
     assert batch.valid?
   end
@@ -71,14 +71,14 @@ class BatchTest < ActiveSupport::TestCase
     batch = Batch.new
     batch.amount_purchased = 200
     batch.cost = 22
-    batch.roast_id = @roast.id
+    batch.roast = @roast
     batch.start_date = Date.today
     assert batch.save
 
     batch2 = Batch.new
     batch.amount_purchased = 200
     batch.cost = 22
-    batch.roast_id = @roast.id
+    batch.roast = @roast
     batch.start_date = Date.today
     assert !batch2.save
   end

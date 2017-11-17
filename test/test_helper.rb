@@ -5,6 +5,7 @@ require_relative './support/authentication_helper'
 class ActiveSupport::TestCase
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
   fixtures :all
-
+  ENV["ADMIN_USERNAME"] = "test"
+  ENV["ADMIN_PASSWORD"] = "password"
   # Add more helper methods to be used by all tests here...
 end
