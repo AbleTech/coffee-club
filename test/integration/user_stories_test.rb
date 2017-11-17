@@ -1,5 +1,3 @@
-
-
 class UserStoriesTest < ActionDispatch::IntegrationTest
   setup do
     @roast = roasts(:roast1)
@@ -55,9 +53,5 @@ class UserStoriesTest < ActionDispatch::IntegrationTest
     assert_select 'td', "Wed 15 Nov 2017"
     assert_select 'td:nth-child(2)', "$4.99"
     assert_select 'td:nth-child(3)', "1"
-
-
   end
-
-
 end

@@ -5,11 +5,7 @@ class Batch < ApplicationRecord
   validates :amount_purchased, numericality: {:greater_than => 0}
   validates :cost, numericality: {:greater_than_or_equal_to => 0}
   validate :date_must_not_be_in_future
-
-  def add_roast(roast_id)
-    current_roast = Roast.find(roast_id)
-    self.roast = current_roast
-  end
+  validates :start_date, uniqueness: {:message => "is already used by another batch"}
 
   def get_cost_per_gram
     cost/amount_purchased

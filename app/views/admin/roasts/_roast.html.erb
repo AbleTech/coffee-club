@@ -1,0 +1,29 @@
+
+<%= link_to new_admin_roast_path, {:class => "btn btn btn-block"} do %>
+  <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Add New Roast
+<% end %>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Company</th>
+      <th>Roast Name</th>
+      <th>Description</th>
+      <th colspan="4"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @roasts.each do |roast| %>
+      <tr>
+        <td><%= roast.company %></td>
+        <td><%= roast.name %></td>
+        <td><%= roast.description %></td>
+        <td><%= link_to 'Add Batch', new_admin_batch_path(:roast => roast) %></td>
+        <td><%= link_to 'View Batches', admin_roast_path(roast) %></td>
+        <td><%= link_to 'Edit', edit_admin_roast_path(roast) %></td>
+        <td><%= link_to 'Delete', admin_roast_path(roast), method: :delete, data: { confirm: 'Are you sure you want to delete this roast and any associated batches?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

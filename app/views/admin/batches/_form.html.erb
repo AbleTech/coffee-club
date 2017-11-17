@@ -11,11 +11,9 @@
     </div>
   <% end %>
 
-  <%= form.hidden_field :roast_id, id: :batch_roast_id, :value => @batch.roast.id%>
-
   <div class="field form-group">
     <%= form.label :start_date, :class => "form-label" %>
-    <%= form.date_field :start_date, id: :batch_start_date, :class => "form-control"%>
+    <%= form.date_field :start_date, id: :batch_start_date, :class => "form-control", :value => Date.today%>
   </div>
 
   <div class="field">

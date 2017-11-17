@@ -67,4 +67,20 @@ class BatchTest < ActiveSupport::TestCase
     assert batch.valid?
   end
 
+  test 'cannot add two batches with the same start_date' do
+    batch = Batch.new
+    batch.amount_purchased = 200
+    batch.cost = 22
+    batch.roast_id = @roast.id
+    batch.start_date = Date.today
+    assert batch.save
+
+    batch2 = Batch.new
+    batch.amount_purchased = 200
+    batch.cost = 22
+    batch.roast_id = @roast.id
+    batch.start_date = Date.today
+    assert !batch2.save
+  end
+
 end

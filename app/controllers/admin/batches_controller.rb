@@ -1,10 +1,11 @@
 class Admin::BatchesController < ApplicationController
   before_action :set_admin_batch, only: [:show, :edit, :update, :destroy]
+  before_action :get_all_roasts
 
   def new
     @batch = Batch.new
-    @roast = Roast.find(params[:roast])
-    @batch.roast = @roast
+    selected_roast = Roast.find_by_id(params[:roast])
+    @batch.roast = selected_roast unless !selected_roast
   end
 
   def create
@@ -39,10 +40,13 @@ class Admin::BatchesController < ApplicationController
     @batch = Batch.find(params[:id])
   end
 
-
   # Never trust parameters from the scary internet, only allow the white list through.
   def admin_batch_params
     params.require(:batch).permit(:roast_id, :start_date, :cost, :amount_purchased)
+  end
+
+  def get_all_roasts
+    @roasts = Roast.all
   end
 
 end
