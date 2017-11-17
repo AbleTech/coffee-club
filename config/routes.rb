@@ -6,5 +6,5 @@ Rails.application.routes.draw do
   end
 
   root 'welcome#index'
-  get '/admin' => 'admin#index'
+  get '/admin' => 'admin#index', as: :admin_root
 end

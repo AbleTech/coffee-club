@@ -8,7 +8,7 @@
   </tr>
   <% @batches.order('start_date DESC').each do |batch| %>
     <tr>
-      <td><%= link_to "#{batch.roast.company} #{batch.roast.name}"admin_roast_url(batch.roast) %></td>
+      <td><%= link_to "#{batch.roast.company} #{batch.roast.name}", admin_roast_url(batch.roast) %></td>
       <td><%= batch.start_date.strftime("%a %d %b %Y") %></td>
       <td><%= number_to_currency batch.get_cost_per_gram %></td>
       <td><%= batch.amount_purchased %></td>
