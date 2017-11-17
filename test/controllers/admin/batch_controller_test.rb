@@ -59,7 +59,7 @@ class Admin::RoastsControllerTest < ActionDispatch::IntegrationTest
     assert_difference('Batch.count', -1) do
       delete admin_batch_url(@batch), headers: @header
     end
-    assert_redirected_to admin_roast_url(@batch.roast)
+    assert_redirected_to admin_root_url
   end
 
 

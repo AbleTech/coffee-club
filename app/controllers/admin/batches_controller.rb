@@ -31,7 +31,7 @@ class Admin::BatchesController < ApplicationController
   def destroy
     roast = @batch.roast
     @batch.destroy
-    redirect_to admin_roast_url(roast), notice: 'Batch was successfully destroyed.'
+    redirect_to admin_root_path, notice: 'Batch was successfully destroyed.'
   end
 
   private
