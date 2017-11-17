@@ -1,4 +1,4 @@
-class Admin::BatchesController < ApplicationController
+class Admin::BatchesController < Admin::ApplicationController
   before_action :set_admin_batch, only: [:show, :edit, :update, :destroy]
   before_action :get_all_roasts
 
