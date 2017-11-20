@@ -44,4 +44,15 @@ class VotesControllerTest < ActionDispatch::IntegrationTest
 
     assert_equal response.body, "Error processing vote"
   end
+
+  test 'send notification to Slack' do
+    mock = Minitest::Mock.new
+    def mock.apply; true; end
+    SendSlackNotification.stub :perform, mock do
+      @response_url = @post_params[:response_url]
+      @response = "Successfully voted good"
+    end
+    assert_mock mock
+    assert mock.verify
+  end
 end
