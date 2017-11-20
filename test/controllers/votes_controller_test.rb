@@ -42,17 +42,23 @@ class VotesControllerTest < ActionDispatch::IntegrationTest
       post votes_url, params: @post_params
     end
 
-    assert_equal response.body, "Error processing vote"
+    assert_equal response.body, "Error processing vote - the valid keywords are good and bad"
   end
 
   test 'send notification to Slack' do
     mock = Minitest::Mock.new
-    def mock.apply; true; end
-    SendSlackNotification.stub :perform, mock do
-      @response_url = @post_params[:response_url]
-      @response = "Successfully voted good"
+    mock.expect(:perform, true)
+
+    check_send = lambda { |response_url, response|
+      assert_equal response_url, "https://hooks.slack.com/commands/T024FPB26/274762255539/pIqxQRRaKU0DQovhIBSDuLyH"
+      assert_equal response, "Successfully voted good"
+      mock
+    }
+
+    SendSlackNotification.stub(:new, check_send, [@post_params[:response_url], "Successfully voted good"]) do
+      post votes_url, params: @post_params
     end
-    assert_mock mock
+
     assert mock.verify
   end
 end

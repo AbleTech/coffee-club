@@ -1,18 +1,17 @@
 class SendSlackNotification
-  include UseCasePattern
 
-  attr_reader :res
+  attr_reader :response_url, :response, :uri, :http, :req
 
   def initialize(response_url, response)
     @response_url = response_url
     @response = response
+    @uri = URI(response_url)
+    @http = Net::HTTP.new(uri.host, uri.port)
+    @req = Net::HTTP::Post.new(uri.path, {'Content-Type' =>'application/json'})
   end
 
   def perform
-    uri = URI(@response_url)
-    http = Net::HTTP.new(uri.host, uri.port)
-    req = Net::HTTP::Post.new(uri.path, {'Content-Type' =>'application/json'})
-    req.body = { "text" => @response }.to_json
-    @res = http.request(req)
+    req.body = { "text" => response }.to_json
+    http.request(req)
   end
 end
