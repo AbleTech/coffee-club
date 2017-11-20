@@ -12,11 +12,11 @@ class VotesController < WelcomeController
     response = if @vote.save
       "Successfully voted #{@vote.rating}"
     else
-      "Error processing vote"
+      "Error processing vote - the valid keywords are good and bad"
     end
     render json: response
 
-    send_slack_notification = SendSlackNotification.perform(params[:response_url], response)
+    SendSlackNotification.new(params[:response_url], response).perform
   end
 
   private
@@ -24,11 +24,4 @@ class VotesController < WelcomeController
   def vote_params
     params.require([:user_name, :text, :response_url])
   end
-
-  # def send_response_to_slack(message, uri)
-  #   http = Net::HTTP.new(uri.host, uri.port)
-  #   req = Net::HTTP::Post.new(uri.path, {'Content-Type' =>'application/json'})
-  #   req.body = { "text" => message }.to_json
-  #   res = http.request(req)
-  # end
 end
