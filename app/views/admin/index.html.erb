@@ -5,6 +5,30 @@
 </p>
 
 <div class="row">
+  <div class="panel panel-default">
+    <div class="panel-body">
+        <h2 align="center">Current Batch</h2>
+        <h4 align="center">
+          <%= @current_batch.roast.company %>
+          <%= @current_batch.roast.name %>
+        </h4>
+        <p align="center">
+          Start Date: <%= @current_batch.start_date.strftime("%a %d %b %Y") %>
+        </p>
+
+        <div class="row">
+          <div class="col-sm-6 alert alert-success" align="center">
+            <h1><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> 22</h1>
+          </div>
+          <div class="col-sm-6 alert alert-danger" align="center">
+            <h1><span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span> 41</h1>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
   <div class="col-sm-6">
     <%= link_to admin_roasts_path, {:class => "btn btn btn-block "} do %>
       See All Roasts

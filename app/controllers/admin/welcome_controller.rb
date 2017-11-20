@@ -4,5 +4,7 @@ class Admin::WelcomeController < Admin::ApplicationController
     @batches = Batch.all
 
     @count = 1
+
+    @current_batch = Batch.order('start_date').last
   end
 end
