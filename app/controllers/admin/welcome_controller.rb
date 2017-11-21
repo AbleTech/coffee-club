@@ -1,7 +1,10 @@
 class Admin::WelcomeController < Admin::ApplicationController
   def index
-    @roasts = Roast.all
-    @batches = Batch.all
-    @current_batch = Batch.order('start_date').last
+    @batches = Batch.preload(:roast).all
+    @votes = Vote.all
+
+    @report = CreateVotingReport.new(@batches, @votes).perform
+
+    @current_roast = DetermineCurrentRoast.new(@batches).perform
   end
 end
