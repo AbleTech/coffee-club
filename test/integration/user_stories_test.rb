@@ -38,7 +38,7 @@ class UserStoriesTest < ActionDispatch::IntegrationTest
     get new_admin_batch_path(:roast => @roast), headers: @header
     assert_response :success
     assert_difference('Batch.count') do
-      post admin_batches_url, params: { batch: { start_date: "2017-11-15 00:00:00", cost: 4.99, amount_purchased: 1, roast_id: @roast.id} }, headers: @header
+      post admin_batches_url, params: { batch: { start_date: "2017-11-12 00:00:00", cost: 4.99, amount_purchased: 1, roast_id: @roast.id} }, headers: @header
     end
     assert_redirected_to admin_roast_url(@batch.roast)
     assert_equal @batch.roast, @roast
@@ -49,7 +49,7 @@ class UserStoriesTest < ActionDispatch::IntegrationTest
     assert_select 'h3', "People's Don Wilfredo Espresso"
     assert_select 'h4', "About"
     assert_select 'p', "Our flagship blend is complex, a full bodied flavour juggernaught with chocolate sweetness and creamy caramel overtones. The 'Don' is roasted for espresso but also works well as a full-bodied plunger."
-    assert_select 'td', "Wed 15 Nov 2017"
+    assert_select 'td', "Sun 12 Nov 2017"
     assert_select 'td:nth-child(2)', "$4.99"
     assert_select 'td:nth-child(3)', "1"
   end

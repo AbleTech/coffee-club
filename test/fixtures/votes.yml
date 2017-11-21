@@ -2,8 +2,8 @@
 
 one:
   rating: good
-  date: 2017-11-21
+  date: 2017-11-21 00:00:01
 
 two:
   rating: bad
-  date: 2017-11-21
+  date: 2017-11-21 00:00:10
