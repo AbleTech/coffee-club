@@ -3,8 +3,8 @@ class CreateVotingReport
   attr_reader :batches, :votes, :report
 
   def initialize(batches, votes)
-    @batches = batches.to_a
-    @votes = votes.to_a
+    @batches = batches
+    @votes = votes
     @report = {}
   end
 

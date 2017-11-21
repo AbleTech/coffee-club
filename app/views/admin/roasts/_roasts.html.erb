@@ -15,7 +15,7 @@
     <th>Votes (Count)</th>
     <th colspan="2"></th>
   </tr>
-  <% @report.sort_by {|roast, stats| calculate_score(stats)}.reverse[0..9].each do |roast, stats| %>
+  <% @sorted_report.each do |roast, stats| %>
     <tr>
       <td><%= roast.company %> <%= roast.name %></td>
       <td><%= stats[:good] %></td>

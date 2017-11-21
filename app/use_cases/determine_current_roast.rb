@@ -3,7 +3,7 @@ class DetermineCurrentRoast
   attr_reader :batches
 
   def initialize(batches)
-    @batches = batches.to_a
+    @batches = batches
   end
 
   def perform
