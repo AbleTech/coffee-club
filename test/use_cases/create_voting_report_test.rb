@@ -1,22 +1,24 @@
+require 'test_helper'
+
 describe CreateVotingReport do
 
-  let(:batches) { Batch.all.to_a }
-  let(:votes) { Vote.all.to_a }
+  let(:batches) { [] }
+  let(:votes) { [] }
 
   before(:each) do
-    @roast = Roast.create({ company: "People's", description: "Nice", name: "Coffee"})
-    Batch.create({ start_date: "2017-08-15 00:00:00", cost: 4.99, amount_purchased: 1, roast_id: @roast.id})
-    Vote.create({ rating: "good", date: "2017-08-16 00:00:00"})
-    Vote.create({ rating: "good", date: "2017-08-16 00:00:00"})
-    Vote.create({ rating: "bad", date: "2017-08-16 00:00:00"})
-    Batch.create({ start_date: "2017-08-18 00:00:00", cost: 4.99, amount_purchased: 1, roast_id: @roast.id})
-    Vote.create({ rating: "good", date: "2017-08-18 00:00:00"})
-    Vote.create({ rating: "bad", date: "2017-08-18 00:00:00"})
+    @roast = Roast.new({ company: "People's", description: "Nice", name: "Coffee"})
+    batches << Batch.new({ start_date: "2017-08-15 00:00:00", cost: 4.99, amount_purchased: 1, roast: @roast})
+    votes << Vote.new({ rating: "good", date: "2017-08-16 00:00:00"})
+    votes << Vote.new({ rating: "good", date: "2017-08-16 00:00:00"})
+    votes << Vote.new({ rating: "bad", date: "2017-08-16 00:00:00"})
+    batches << Batch.new({ start_date: "2017-08-18 00:00:00", cost: 4.99, amount_purchased: 1, roast: @roast})
+    votes << Vote.new({ rating: "good", date: "2017-08-18 00:00:00"})
+    votes << Vote.new({ rating: "bad", date: "2017-08-18 00:00:00"})
 
-    @roast2 = Roast.create({ company: "Mojo", description: "Coffee-ish", name: "Coffee 2"})
-    Batch.create({ start_date: "2017-08-19 00:00:00", cost: 4.99, amount_purchased: 1, roast_id: @roast2.id})
-    Vote.create({ rating: "good", date: "2017-08-19 00:01:00"})
-    Vote.create({ rating: "bad", date: "2017-08-19 00:02:00"})
+    @roast2 = Roast.new({ company: "Mojo", description: "Coffee-ish", name: "Coffee 2"})
+    batches << Batch.new({ start_date: "2017-08-19 00:00:00", cost: 4.99, amount_purchased: 1, roast: @roast2})
+    votes << Vote.new({ rating: "good", date: "2017-08-19 00:01:00"})
+    votes << Vote.new({ rating: "bad", date: "2017-08-19 00:02:00"})
   end
 
   it 'correctly calculates number of votes' do
