@@ -2,7 +2,6 @@ class UserStoriesTest < ActionDispatch::IntegrationTest
   setup do
     @roast = roasts(:roast1)
     @batch = batches(:batch1)
-    #@batch = batches(:batch1)
     @header = {"Authorization" => ActionController::HttpAuthentication::Basic.encode_credentials(ENV["ADMIN_USERNAME"], ENV["ADMIN_PASSWORD"])}
   end
 
