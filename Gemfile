@@ -9,7 +9,7 @@ end
 gem 'bootstrap-sass', '~> 3.3.7'
 gem 'jquery-rails'
 
-gem 'dotenv-rails', :groups => [:development, :test]
+gem 'dotenv-rails', :groups => [:development]
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
