@@ -1,8 +1,3 @@
-
-<p id="notice"><%= notice %></p>
-<p id="alert"><%= alert %></p>
-<h1>List of All Roasts</h1>
-
 <%= link_to new_admin_roast_path, {:class => "btn btn btn-block"} do %>
   <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Add New Roast
 <% end %>
@@ -31,7 +26,3 @@
     <% end %>
   </tbody>
 </table>
-
-<%= link_to admin_root_path, {:class => "btn btn btn-block "} do %>
-  Back
-<% end %>

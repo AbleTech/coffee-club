@@ -4,7 +4,7 @@ class RoastTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
-  test "required fields must not be empty" do
+  test "required roast fields must not be empty" do
     roast = Roast.new
     assert roast.invalid?
     assert roast.errors[:company].any?
