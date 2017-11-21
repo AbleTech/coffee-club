@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class Admin::BatchesControllerTest < ActionDispatch::IntegrationTest
-
   setup do
     @header = {"Authorization" => ActionController::HttpAuthentication::Basic.encode_credentials(ENV["ADMIN_USERNAME"], ENV["ADMIN_PASSWORD"])}
 
@@ -12,12 +11,11 @@ class Admin::BatchesControllerTest < ActionDispatch::IntegrationTest
 
   test "batch authentication requests" do
     check_for_authentication([
-      Request.new(:get, new_admin_roast_url),
+      Request.new(:get, new_admin_batch_url),
       Request.new(:get, edit_admin_batch_url(@batch)),
       Request.new(:post, admin_batches_url),
       Request.new(:delete, admin_batch_url(@batch)),
       Request.new(:patch, admin_batch_url(@batch))
-
     ])
   end
 
@@ -29,7 +27,6 @@ class Admin::BatchesControllerTest < ActionDispatch::IntegrationTest
   test "should get new batch - with no roast" do
     get new_admin_batch_path, headers: @header
     assert_response :success
-
   end
 
   test "should get new batch - with invalid roast" do
@@ -61,6 +58,4 @@ class Admin::BatchesControllerTest < ActionDispatch::IntegrationTest
     end
     assert_redirected_to admin_roast_url(@batch.roast)
   end
-
-
 end
