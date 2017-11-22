@@ -1,0 +1,27 @@
+<div class="row">
+  <div class="panel panel-default">
+    <div class="panel-body">
+        <h2 align="center">Current Roast</h2>
+        <h4 align="center">
+            <%= @current_roast[:company] %>
+            <%= @current_roast[:name] %>
+        </h4>
+        <p align="center">
+          Start Date: <%= @current_roast[:start_date].strftime("%a %d %b %Y") %>
+        </p>
+
+        <p align="center">
+          "<%= @current_roast[:desc] %>"
+        </p>
+
+        <div class="row">
+          <div class="col-sm-6 alert alert-success" align="center">
+            <h1><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> <%= @current_roast[:good]%></h1>
+          </div>
+          <div class="col-sm-6 alert alert-danger" align="center">
+            <h1><span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span> <%= @current_roast[:bad]%></h1>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>

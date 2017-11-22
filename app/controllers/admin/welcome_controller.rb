@@ -1,4 +1,5 @@
 class Admin::WelcomeController < Admin::ApplicationController
+  require_relative '../welcome_controller'
   def index
     batches = Batch.preload(:roast).order("starts_at asc").to_a
     votes = Vote.all.to_a
