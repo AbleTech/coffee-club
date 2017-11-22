@@ -1,5 +1,3 @@
-require 'net/http'
-
 class VotesController < WelcomeController
   skip_before_action :verify_authenticity_token
   
