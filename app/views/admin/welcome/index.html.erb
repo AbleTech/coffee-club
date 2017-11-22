@@ -9,19 +9,19 @@
     <div class="panel-body">
         <h2 align="center">Current Roast</h2>
         <h4 align="center">
-            <%= @current_roast[:company] %>
-            <%= @current_roast[:name] %>
+            <%= @active_roast.company %>
+            <%= @active_roast.name %>
         </h4>
         <p align="center">
-          Start Date: <%= @current_roast[:starts_at].strftime("%a %d %b %Y") %>
+          Start Date: <%= @active_batch.starts_at.strftime("%a %d %b %Y") %>
         </p>
 
         <div class="row">
           <div class="col-sm-6 alert alert-success" align="center">
-            <h1><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> <%= @current_roast[:good]%></h1>
+            <h1><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> <%= @active_roast_scores[:good]%></h1>
           </div>
           <div class="col-sm-6 alert alert-danger" align="center">
-            <h1><span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span> <%= @current_roast[:bad]%></h1>
+            <h1><span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span> <%= @active_roast_scores[:bad]%></h1>
           </div>
         </div>
     </div>

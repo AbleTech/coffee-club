@@ -5,16 +5,12 @@ class Admin::WelcomeController < Admin::ApplicationController
 
     report = CreateVotingReport.new(batches, votes).perform
 
-    current_roast = Roast.active_roast(batches)
+    @active_batch = Batch.active_batch(batches)
+    @active_roast = @active_batch.roast
+
+    @active_roast_scores = {:good => report[@active_roast][:good], :bad => report[@active_roast][:bad]}
 
     @sorted_report = report.sort_by { |_, stats| stats[:score] }.reverse[0..9]
     @top_10_batches = batches[0..9]
-    @current_roast = {
-      :company => current_roast[:roast][:company],
-      :name => current_roast[:roast][:name],
-      :starts_at => current_roast[:starts_at],
-      :good => report[current_roast[:roast]][:good],
-      :bad => report[current_roast[:roast]][:bad]
-    }
   end
 end

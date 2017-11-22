@@ -7,6 +7,10 @@ class Batch < ApplicationRecord
   validate :date_must_not_be_in_future
   validates :starts_at, uniqueness: {:message => "is already used by another batch"}
 
+  def self.active_batch(batches)
+    batches.last
+  end
+
   private
 
   def date_must_not_be_in_future
