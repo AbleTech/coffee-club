@@ -1,15 +1,18 @@
 require 'net/http'
 
 class VotesController < WelcomeController
+  skip_before_action :verify_authenticity_token
+  
   def create
     @vote = Vote.new
-    @vote.date = Date.today.beginning_of_day
-    @vote.rating = vote_params[:text].downcase
+    @vote.voted_at = DateTime.now
+    @vote.user_text = vote_params[:text].downcase
+    @vote.rating = calculate_rating(@vote.user_text)
 
     response = if @vote.save
-      "Successfully voted #{@vote.rating}"
+      "Successfully #{@vote.rating == 1 ? "upvoted" : "downvoted"} the batch"
     else
-      "Error processing vote - the valid keywords are good and bad"
+      "Error processing vote - the valid keywords are good (+1) and bad (-1)"
     end
     render json: response
 
@@ -20,5 +23,9 @@ class VotesController < WelcomeController
 
   def vote_params
     params.permit(:user_name, :text, :response_url)
+  end
+
+  def calculate_rating(user_text)
+    (user_text == "good" || user_text == "+1") ? 1 : -1
   end
 end
