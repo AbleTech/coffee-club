@@ -1,5 +1,3 @@
-require 'net/http'
-
 class VotesController < WelcomeController
   def create
     @vote = Vote.new
