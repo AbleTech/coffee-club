@@ -1,13 +1,10 @@
 require 'net/http'
 
 class VotesController < WelcomeController
-  skip_before_action :verify_authenticity_token
-
   def create
-    vote_params
     @vote = Vote.new
     @vote.date = Date.today.beginning_of_day
-    @vote.rating = params[:text].downcase
+    @vote.rating = vote_params[:text].downcase
 
     response = if @vote.save
       "Successfully voted #{@vote.rating}"
@@ -16,12 +13,12 @@ class VotesController < WelcomeController
     end
     render json: response
 
-    SendSlackNotification.new(params[:response_url], response).perform
+    SendSlackNotification.new(vote_params[:response_url], response).perform
   end
 
   private
 
   def vote_params
-    params.require([:user_name, :text, :response_url])
+    params.permit(:user_name, :text, :response_url)
   end
 end
