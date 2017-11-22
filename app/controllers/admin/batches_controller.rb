@@ -12,7 +12,9 @@ class Admin::BatchesController < Admin::ApplicationController
     @batch = Batch.new(admin_batch_params)
     if @batch.save
       redirect_to admin_roast_url(@batch.roast), notice: 'Batch was successfully created.'
-      SendBatchChangeNotification.new(@batch).perform
+      if !(Rails.env.test?)
+        SendBatchChangeNotification.new(@batch, "https://hooks.slack.com/services/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").perform
+      end
     else
       render :new
     end
