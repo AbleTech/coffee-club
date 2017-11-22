@@ -3,7 +3,7 @@ class Admin::BatchesController < Admin::ApplicationController
   before_action :get_all_roasts
 
   def new
-    @batch = Batch.new(:start_date => Date.today)
+    @batch = Batch.new(:starts_at => Date.today)
     selected_roast = Roast.find_by_id(params[:roast])
     @batch.roast = selected_roast unless !selected_roast
   end
@@ -42,7 +42,7 @@ class Admin::BatchesController < Admin::ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def admin_batch_params
-    params.require(:batch).permit(:roast_id, :start_date, :cost, :amount_purchased)
+    params.require(:batch).permit(:roast_id, :starts_at, :cost, :amount_purchased)
   end
 
   def get_all_roasts

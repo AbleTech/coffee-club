@@ -1,9 +1,9 @@
 class VotesController < WelcomeController
   skip_before_action :verify_authenticity_token
-  
+
   def create
     @vote = Vote.new
-    @vote.voted_at = DateTime.now
+    @vote.voted_at = Date.today.beginning_of_day
     @vote.user_text = vote_params[:text].downcase
     @vote.rating = calculate_rating(@vote.user_text)
 

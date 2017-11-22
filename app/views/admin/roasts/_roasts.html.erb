@@ -20,7 +20,7 @@
       <td><%= roast.company %> <%= roast.name %></td>
       <td><%= stats[:good] %></td>
       <td><%= stats[:bad] %></td>
-      <td><%= calculate_score(stats) %></td>
+      <td><%= number_to_human stats[:score] %></td>
       <td><%= stats[:count] %></td>
       <td><%= link_to 'Edit', edit_admin_roast_path(roast) %></td>
       <td><%= link_to 'Delete', admin_roast_path(roast), method: :delete, data: { confirm: 'Are you sure you want to delete this batch?' } %></td>
