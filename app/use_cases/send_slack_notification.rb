@@ -1,5 +1,4 @@
 class SendSlackNotification
-
   attr_reader :response_url, :response, :uri, :http, :req
 
   def initialize(response_url, response)
