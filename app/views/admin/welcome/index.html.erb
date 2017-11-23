@@ -4,7 +4,7 @@
   <%= notice %>
 </p>
 
-<% if @active_roast != nil %>
+<% if @active_roast %>
   <%= render 'current', roast: @active_roast, batch: @active_batch, good_score: @active_roast_scores[:good], bad_score: @active_roast_scores[:bad] %>
 <% else %>
   <p>There are no batches currently active, click the button below to start one.</p>
@@ -33,7 +33,7 @@
   </div>
 </div>
 
-<% if @active_roast != nil %>
+<% if @active_roast %>
   <%= render 'roasts', report: @sorted_report %>
   <%= render 'admin/batches/batches', batches: @top_10_batches %>
 <% end %>

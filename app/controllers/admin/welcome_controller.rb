@@ -5,9 +5,9 @@ class Admin::WelcomeController < Admin::ApplicationController
 
     @active_batch = batches.active
 
-    if !@active_batch.blank?
+    if @active_batch.present?
       @active_roast = @active_batch.roast
-      @active_roast_scores = {:good => report[@active_roast][:good], :bad => report[@active_roast][:bad]}
+      @active_roast_scores = report[@active_roast]
       @sorted_report = report.sort_by { |_, stats| stats[:score] }.reverse[0..9]
       @top_10_batches = batches.last(10)
     end

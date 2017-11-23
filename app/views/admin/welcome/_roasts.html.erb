@@ -11,7 +11,7 @@
           <col span="1" style="width: <%= col_width %>%;" />
           <col span="1" style="width: <%= col_width %>%;" />
           <% if params[:controller] == "admin/welcome" %>
-          <col span="2" style="width: 5%;" />
+            <col span="2" style="width: 5%;" />
           <% end %>
         </colgroup>
         <tr>
@@ -22,7 +22,7 @@
           <th>Score</th>
           <th>Total Votes (Count)</th>
           <% if params[:controller] == "admin/welcome" %>
-          <th colspan="2"></th>
+            <th colspan="2"></th>
           <% end %>
         </tr>
         <ol>
@@ -37,8 +37,8 @@
             <td><%= number_to_human stats[:score] %></td>
             <td><%= stats[:count] %></td>
             <% if params[:controller] == "admin/welcome" %>
-            <td><%= link_to 'Edit', edit_admin_roast_path(roast) %></td>
-            <td><%= link_to 'Delete', admin_roast_path(roast), method: :delete, data: { confirm: 'Are you sure you want to delete this batch?' } %></td>
+              <td><%= link_to 'Edit', edit_admin_roast_path(roast) %></td>
+              <td><%= link_to 'Delete', admin_roast_path(roast), method: :delete, data: { confirm: 'Are you sure you want to delete this batch?' } %></td>
             <% end %>
           </tr>
           <% end %>
