@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171122202845) do
+ActiveRecord::Schema.define(version: 20171122220907) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "batches", force: :cascade do |t|
-    t.datetime "start_date", null: false
+    t.datetime "starts_at", null: false
     t.decimal "cost", null: false
     t.integer "amount_purchased", null: false
     t.bigint "roast_id"

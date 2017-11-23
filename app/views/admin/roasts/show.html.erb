@@ -15,10 +15,10 @@
     <th>Amount Purchased (g)</th>
     <th colspan="2"></th>
   </tr>
-  <% @roast.batches.order('start_date DESC').each do |batch| %>
+  <% @roast.batches.order('starts_at DESC').each do |batch| %>
     <% batch_presenter = BatchPresenter.new(batch)%>
     <tr>
-      <td><%= batch_presenter.start_date %></td>
+      <td><%= batch_presenter.starts_at %></td>
       <td><%= batch_presenter.cost_per_gram %></td>
       <td><%= batch_presenter.amount_purchased %></td>
       <td><%= link_to 'Edit', edit_admin_batch_path(batch_presenter) %></td>
