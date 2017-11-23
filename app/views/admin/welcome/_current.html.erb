@@ -4,8 +4,7 @@
       <h2 align="center">Current Roast</h2>
       <% if roast %>
         <h4 align="center">
-          <%= roast.company %>
-          <%= roast.name %>
+          <%= roast.company %> <%= roast.name %>
         </h4>
         <p align="center">
           <% batch_presenter = BatchPresenter.new(batch) %>

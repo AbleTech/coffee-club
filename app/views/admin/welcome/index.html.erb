@@ -35,7 +35,7 @@
   </div>
 </div>
 
-<% if @active_roast %>
+<% if @top_10_batches %>
   <%= render 'roasts', report: @sorted_report %>
   <%= render 'admin/batches/batches', batches: @top_10_batches %>
 <% end %>
