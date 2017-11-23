@@ -3,7 +3,7 @@ class Admin::BatchesController < Admin::ApplicationController
   before_action :get_all_roasts
 
   def new
-    @batch = Batch.new
+    @batch = Batch.new(:start_date => Date.today)
     selected_roast = Roast.find_by_id(params[:roast])
     @batch.roast = selected_roast unless !selected_roast
   end
@@ -31,7 +31,7 @@ class Admin::BatchesController < Admin::ApplicationController
   def destroy
     roast = @batch.roast
     @batch.destroy
-    redirect_to admin_root_path, notice: 'Batch was successfully destroyed.'
+    redirect_to admin_roast_path(roast), notice: 'Batch was successfully destroyed.'
   end
 
   private

@@ -12,13 +12,13 @@
   <% end %>
 
   <div class="field form-group">
-    <%= form.label :roast, :class => "form-label" %>
-    <%= form.select :roast_id, options_for_select(format_roast_options(@roasts)), {id: "batch_roast_id", prompt: "Select Roast"}, {class: "form-control"}%>
+    <%= form.label :roast_id, :class => "form-label" %>
+    <%= form.select :roast_id, options_for_select(format_roast_options(@roasts)), {prompt: "Select a Roast"}, {class: "form-control"}%>
   </div>
 
   <div class="field form-group">
     <%= form.label :start_date, :class => "form-label" %>
-    <%= form.date_field :start_date, id: :batch_start_date, :class => "form-control", :value => Date.today%>
+    <%= form.date_field :start_date, id: :batch_start_date, :class => "form-control"%>
   </div>
 
   <div class="field">
