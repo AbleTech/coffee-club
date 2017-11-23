@@ -1,27 +1,38 @@
 <div class="row">
   <div class="panel panel-default">
     <div class="panel-body">
-        <h2 align="center">Current Roast</h2>
+      <h2 align="center">Current Roast</h2>
+      <% if roast %>
         <h4 align="center">
-            <%= @current_roast[:company] %>
-            <%= @current_roast[:name] %>
+          <%= roast.company %>
+          <%= roast.name %>
         </h4>
         <p align="center">
-          Start Date: <%= @current_roast[:start_date].strftime("%a %d %b %Y") %>
+          <% batch_presenter = BatchPresenter.new(batch) %>
+          Start Date: <%= batch_presenter.starts_at %>
         </p>
 
         <p align="center">
-          "<%= @current_roast[:desc] %>"
+          "<%= roast.description %>"
         </p>
 
         <div class="row">
           <div class="col-sm-6 alert alert-success" align="center">
-            <h1><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> <%= @current_roast[:good]%></h1>
+            <h1>
+              <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
+              <%= good_score %>
+            </h1>
           </div>
           <div class="col-sm-6 alert alert-danger" align="center">
-            <h1><span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span> <%= @current_roast[:bad]%></h1>
+            <h1>
+              <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>
+              <%= bad_score %>
+            </h1>
           </div>
-        </div>
+        <% else %>
+          <h2 align="center">No Roast is Currently Active</h2>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

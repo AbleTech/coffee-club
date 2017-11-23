@@ -1,7 +1,11 @@
-<h1 align="center">Coffee Club</h1>
+<h1 align="center">The Abletech Coffee Club</h1>
 
-<%= render 'admin/welcome/current' %>
+<% if @active_roast != nil %>
+  <%= render 'admin/welcome/current', roast: @active_roast, batch: @active_batch, good_score: @active_roast_scores[:good], bad_score: @active_roast_scores[:bad] %>
 
-<h2 align="center">Top 10 Roasts</h2>
+  <h2>Top 10 Roasts</h2>
 
-<%= render 'admin/roasts/roasts' %>
+  <%= render 'admin/roasts/roasts', report: @sorted_report %>
+<% else %>
+  <h2 align="center">There are no batches that are currently active.</h2>
+<% end %>
