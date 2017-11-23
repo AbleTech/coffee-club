@@ -1,13 +1,13 @@
 <h1 align="center">The Abletech Coffee Club</h1>
 
 <% if @active_roast %>
-  <%= render 'admin/welcome/current', roast: @active_roast, batch: @active_batch, good_score: @active_roast_scores[:good], bad_score: @active_roast_scores[:bad] %>
 
-  <h2>Top 10 Roasts</h2>
+<%= render 'admin/welcome/current', roast: @active_roast, batch: @active_batch, good_score: @active_roast_scores[:good], bad_score: @active_roast_scores[:bad] %>
 
-  <%= render 'admin/welcome/roasts', report: @sorted_report %>
+<%= render 'admin/welcome/roasts', report: @sorted_report %>
+
 <% else %>
-  <%= image_tag 'coffee.png', :class => "center"%>
-  <h2 align="center">There are no batches that are currently active.</h2>
-  <h2 align="center">Ask Carl to add an active roast.</h2>
+<%= image_tag 'coffee.png', :class => "center"%>
+<h2 align="center">There are no batches that are currently active.</h2>
+<h2 align="center">Ask Carl to add an active roast.</h2>
 <% end %>

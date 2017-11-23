@@ -1,6 +1,6 @@
 class Admin::WelcomeController < Admin::ApplicationController
   def index
-    batches = Batch.preload(:roast)
+    batches = Batch.preload(:roast).order("starts_at desc")
     report = CreateVotingReport.new(batches, Vote.all).perform
 
     @active_batch = batches.active
@@ -9,7 +9,7 @@ class Admin::WelcomeController < Admin::ApplicationController
       @active_roast = @active_batch.roast
       @active_roast_scores = {:good => report[@active_roast][:good], :bad => report[@active_roast][:bad]}
       @sorted_report = report.sort_by { |_, stats| stats[:score] }.reverse[0..9]
-      @top_10_batches = batches.last(10).reverse
+      @top_10_batches = batches.last(10)
     end
   end
 end

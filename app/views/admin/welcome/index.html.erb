@@ -1,4 +1,4 @@
-<h1>Dashboard</h1>
+<h1 align="center">Admin Dashboard</h1>
 
 <p class="notice">
   <%= notice %>
@@ -10,29 +10,30 @@
   <p>There are no batches currently active, click the button below to start one.</p>
 <% end %>
 
-<%= link_to new_admin_batch_path, {:class => "btn btn btn-block "} do %>
-  <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Start a New Batch
-<% end %>
-
 <div class="row">
-  <div class="col-sm-6">
-    <%= link_to admin_roasts_path, {:class => "btn btn btn-block "} do %>
-      See All Roasts
-    <% end %>
-  </div>
-  <div class="col-sm-6">
-    <%= link_to new_admin_roast_path, {:class => "btn btn btn-block "} do %>
-      <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Add New Roast
-    <% end %>
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <%= link_to new_admin_batch_path, {:class => "btn btn btn-block "} do %>
+      <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Start a New Batch
+      <% end %>
+
+      <div class="row">
+        <div class="col-sm-6">
+          <%= link_to admin_roasts_path, {:class => "btn btn btn-block "} do %>
+          See All Roasts
+          <% end %>
+        </div>
+        <div class="col-sm-6">
+          <%= link_to new_admin_roast_path, {:class => "btn btn btn-block "} do %>
+          <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Add New Roast
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
 <% if @active_roast != nil %>
-  <h2>Top 10 Roasts</h2>
   <%= render 'roasts', report: @sorted_report %>
-
-  <br />
-
-  <h2>Last 10 Batches</h2>
   <%= render 'admin/batches/batches', batches: @top_10_batches %>
 <% end %>
