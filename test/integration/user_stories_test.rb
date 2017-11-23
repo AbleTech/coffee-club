@@ -29,8 +29,7 @@ class UserStoriesTest < ActionDispatch::IntegrationTest
     # check the people's don wilfredo espresso page
     get admin_roast_url(@roast), headers: @header
     assert_response :success
-    assert_select 'h3', "People's Don Wilfredo Espresso"
-    assert_select 'h4', "About"
+    assert_select 'h2', "People's Don Wilfredo Espresso"
     assert_select 'p', "Our flagship blend is complex, a full bodied flavour juggernaught with chocolate sweetness and creamy caramel overtones. The 'Don' is roasted for espresso but also works well as a full-bodied plunger."
     assert_select 'p', "No batches have been created"
 
@@ -46,8 +45,7 @@ class UserStoriesTest < ActionDispatch::IntegrationTest
     # check the roasts page displays what we expect
     get admin_roast_url(@roast), headers: @header
     assert_response :success
-    assert_select 'h3', "People's Don Wilfredo Espresso"
-    assert_select 'h4', "About"
+    assert_select 'h2', "People's Don Wilfredo Espresso"
     assert_select 'p', "Our flagship blend is complex, a full bodied flavour juggernaught with chocolate sweetness and creamy caramel overtones. The 'Don' is roasted for espresso but also works well as a full-bodied plunger."
     assert_select 'td', "Sun 12 Nov 2017"
     assert_select 'td:nth-child(2)', "$4.99"
