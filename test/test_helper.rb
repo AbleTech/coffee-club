@@ -8,5 +8,6 @@ class ActiveSupport::TestCase
   fixtures :all
   ENV["ADMIN_USERNAME"] = "test"
   ENV["ADMIN_PASSWORD"] = "password"
+  ENV["SLACK_URL"] = "https://not.a.real.url/"
   # Add more helper methods to be used by all tests here...
 end

@@ -38,7 +38,7 @@ class Admin::BatchesControllerTest < ActionDispatch::IntegrationTest
     assert_difference('Batch.count') do
       post admin_batches_url, params: @batch_params, headers: @header
     end
-    assert_redirected_to admin_root_url
+    assert_redirected_to admin_roast_url(@roast)
     assert_equal @batch.roast, @roast
   end
 
