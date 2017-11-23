@@ -2,10 +2,11 @@ class VotesController < WelcomeController
   skip_before_action :verify_authenticity_token
 
   def create
-    @vote = Vote.new
-    @vote.voted_at = Date.today.beginning_of_day
-    @vote.user_text = vote_params[:text].downcase
-    @vote.rating = calculate_rating(@vote.user_text)
+    @vote = Vote.new({
+      voted_at: Date.today.beginning_of_day,
+      user_text: vote_params[:text].downcase,
+      rating: calculate_rating(vote_params[:text].downcase)
+    })
 
     response = if @vote.save
       "Successfully #{@vote.rating == 1 ? "upvoted" : "downvoted"} the batch"
