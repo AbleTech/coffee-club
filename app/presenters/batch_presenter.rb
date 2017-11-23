@@ -5,7 +5,7 @@ class BatchPresenter < SimpleDelegator
     number_to_currency cost/amount_purchased
   end
 
-  def start_date
+  def starts_at
     super.strftime("%a %d %b %Y")
   end
 end

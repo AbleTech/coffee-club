@@ -1,0 +1,29 @@
+<table class="table table-hover" style="width: 100%">
+  <colgroup>
+    <col span="1" style="width: 35%;" />
+    <col span="1" style="width: 15%;" />
+    <col span="1" style="width: 15%;" />
+    <col span="1" style="width: 15%;" />
+    <col span="1" style="width: 15%;" />
+    <col span="2" style="width: 5%;" />
+  </colgroup>
+  <tr>
+    <th>Roast</th>
+    <th># Good</th>
+    <th># Bad</th>
+    <th>Score (Good - Bad)</th>
+    <th>Votes (Count)</th>
+    <th colspan="2"></th>
+  </tr>
+  <% @sorted_report.each do |roast, stats| %>
+    <tr>
+      <td><%= roast.company %> <%= roast.name %></td>
+      <td><%= stats[:good] %></td>
+      <td><%= stats[:bad] %></td>
+      <td><%= number_to_human stats[:score] %></td>
+      <td><%= stats[:count] %></td>
+      <td><%= link_to 'Edit', edit_admin_roast_path(roast) %></td>
+      <td><%= link_to 'Delete', admin_roast_path(roast), method: :delete, data: { confirm: 'Are you sure you want to delete this batch?' } %></td>
+    </tr>
+  <% end %>
+</table>
