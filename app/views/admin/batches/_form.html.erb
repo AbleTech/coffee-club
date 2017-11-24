@@ -13,7 +13,7 @@
 
   <div class="field form-group">
     <%= form.label :roast_id, :class => "form-label" %>
-    <%= form.select :roast_id, options_for_select(format_roast_options(@roasts)), {prompt: "Select a Roast"}, {class: "form-control"}%>
+    <%= form.select :roast_id, options_for_select(format_roast_options(@roasts), batch.roast_id), {prompt: "Select a Roast", id: :roast_id}, {class: "form-control"}%>
   </div>
 
   <div class="field form-group">

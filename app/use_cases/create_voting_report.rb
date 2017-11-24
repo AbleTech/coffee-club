@@ -3,41 +3,36 @@ class CreateVotingReport
   attr_reader :batches, :votes, :report
 
   def initialize(batches, votes)
-    @batches = batches
+    @batches = batches.sort_by{ |batch| batch.starts_at  }
     @votes = votes
     @report = {}
   end
 
   def perform
-    batches.each do |batch|
-      date_before_next_batch = find_date_before_next_batch(batch)
+    batches.push(nil).each_cons(2) do |(current_batch, next_batch)|
+      start_date = current_batch.starts_at.to_date
+      end_date = next_batch ? next_batch.starts_at.prev_day.to_date : Date.today
 
-
-      all_votes_between_dates = votes.select do |vote|
-        vote.voted_at >= batch.starts_at && vote.voted_at <= date_before_next_batch
+      ratings_between_dates = votes.reduce([]) do |result, vote|
+        if (start_date..end_date).include? vote.voted_at.to_date
+          result << vote.rating.to_i
+        end
+        result
       end
 
       stats = {}
-      stats[:count] = all_votes_between_dates.count
-      stats[:good] = all_votes_between_dates.select { |vote| vote.rating == 1 }.count
-      stats[:bad] = all_votes_between_dates.select { |vote| vote.rating == -1 }.count
-      stats[:score] = all_votes_between_dates.sum { |vote| vote.rating }
+      stats[:count] = ratings_between_dates.count
+      positive_votes, negative_votes = ratings_between_dates.partition { |rating| rating > 0 }
+      stats[:good] = positive_votes.sum
+      stats[:bad] = negative_votes.sum.abs
+      stats[:score] = (stats[:good] - stats[:bad])
 
-      update_report(batch.roast, stats)
+      update_report(current_batch.roast, stats)
     end
     report
   end
 
   private
-
-  def find_date_before_next_batch(batch)
-    next_batch_starts_at =
-    if batch == batches.last
-      Date.today.beginning_of_day
-    else
-      batches[batches.find_index(batch) + 1].starts_at.prev_day
-    end
-  end
 
   def update_report(roast, stats)
     if report.key?(roast)

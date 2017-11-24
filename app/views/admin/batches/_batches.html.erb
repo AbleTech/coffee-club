@@ -1,18 +1,25 @@
-<table class="table table-hover">
-  <tr>
-    <th>Roast</th>
-    <th>Start Date</th>
-    <th>Cost Per Gram</th>
-    <th colspan="2"></th>
-  </tr>
-  <% @top_10_batches.each do |batch| %>
-    <% batch_presenter = BatchPresenter.new(batch) %>
-    <tr>
-      <td><%= link_to "#{batch.roast.company} #{batch.roast.name}", admin_roast_url(batch.roast) %></td>
-      <td><%= batch_presenter.starts_at %></td>
-      <td><%= batch_presenter.cost_per_gram %></td>
-      <td><%= link_to 'Edit', edit_admin_batch_path(batch) %></td>
-      <td><%= link_to 'Delete', admin_batch_path(batch), method: :delete, data: { confirm: 'Are you sure you want to delete this batch?' } %></td>
-    </tr>
-  <% end %>
-</table>
+<div class="row">
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <h2>Last 10 Batches</h2>
+      <table class="table table-hover batches-table">
+        <tr>
+          <th>Roast</th>
+          <th>Start Date</th>
+          <th>Cost Per Gram</th>
+          <th colspan="2"></th>
+        </tr>
+        <% batches.each do |batch| %>
+        <% batch_presenter = BatchPresenter.new(batch) %>
+        <tr>
+          <td><%= link_to "#{batch.roast.company} #{batch.roast.name}", admin_roast_url(batch.roast) %></td>
+          <td><%= batch_presenter.starts_at %></td>
+          <td><%= batch_presenter.cost_per_gram %></td>
+          <td><%= link_to 'Edit', edit_admin_batch_path(batch) %></td>
+          <td><%= link_to 'Delete', admin_batch_path(batch), method: :delete, data: { confirm: 'Are you sure you want to delete this batch?' } %></td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>
