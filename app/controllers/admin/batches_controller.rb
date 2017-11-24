@@ -11,7 +11,8 @@ class Admin::BatchesController < Admin::ApplicationController
   def create
     @batch = Batch.new(admin_batch_params)
     if @batch.save
-      redirect_to admin_root_url, notice: 'Batch was successfully created.'
+      redirect_to admin_roast_url(@batch.roast), notice: 'Batch was successfully created.'
+      SendBatchChangeNotification.new(@batch, ENV['SLACK_URL']).perform
     else
       render :new
     end

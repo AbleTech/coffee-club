@@ -4,8 +4,7 @@ require 'net/http'
 describe SendBatchChangeNotification do
   let(:roast){ Roast.new({ company: "People's", description: "Nice", name: "Coffee"}) }
   let(:batch){ Batch.new({ starts_at: Date.today, cost: 4.99, amount_purchased: 1, roast: roast}) }
-  let(:url){ "https://test.website.not.real" }
-  let(:uri){ URI(url) }
+  let(:uri){ URI(ENV['SLACK_URL']) }
   let(:slack_message){ ":coffee: A new batch of coffee is available in the kitchen! :coffee:"\
     "\nThe new roast is *#{batch.roast.company} #{batch.roast.name}*."\
     "\nTo view the votes, <https://coffee-club-app.herokuapp.com/|click here>."\
@@ -20,7 +19,7 @@ describe SendBatchChangeNotification do
     post_mock.expect(:body=, true, [{ "text" => slack_message }.to_json])
     Net::HTTP.stub(:new, http_mock, [uri.host, uri.port]) do
       Net::HTTP::Post.stub(:new, post_mock, [uri.path, {'Content-Type' =>'application/json'}]) do
-        SendBatchChangeNotification.new(batch, url).perform
+        SendBatchChangeNotification.new(batch, ENV['SLACK_URL']).perform
       end
     end
     assert http_mock.verify
