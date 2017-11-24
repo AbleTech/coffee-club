@@ -38,7 +38,7 @@ class Admin::BatchesControllerTest < ActionDispatch::IntegrationTest
     assert_difference('Batch.count') do
       post admin_batches_url, params: @batch_params, headers: @header
     end
-    assert_redirected_to admin_roast_url(@batch.roast)
+    assert_redirected_to admin_root_url
     assert_equal @batch.roast, @roast
   end
 
@@ -49,13 +49,13 @@ class Admin::BatchesControllerTest < ActionDispatch::IntegrationTest
 
   test "should update batch" do
     patch admin_batch_url(@batch), params: @batch_params, headers: @header
-    assert_redirected_to admin_roast_url(@batch.roast)
+    assert_redirected_to admin_root_url
   end
 
   test "should destroy batch" do
     assert_difference('Batch.count', -1) do
       delete admin_batch_url(@batch), headers: @header
     end
-    assert_redirected_to admin_roast_url(@batch.roast)
+    assert_redirected_to admin_root_url
   end
 end

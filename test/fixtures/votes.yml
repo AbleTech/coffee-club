@@ -19,3 +19,8 @@ four:
   user_text: -1
   voted_at: 2017-11-12 10:00:00 +1300
   rating: -1
+
+four:
+  user_text: -1
+  voted_at: 2017-11-14 10:00:00 +1300
+  rating: -1

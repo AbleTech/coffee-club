@@ -1,4 +1,24 @@
-<h1>Coffee Club</h1>
-<p>
-  Welcome to the Coffee Club application!
-</p>
+<h1 align="center">The Abletech Coffee Club</h1>
+
+<% if @active_roast %>
+
+<%= render 'admin/welcome/current', roast: @active_roast, batch: @active_batch, good_score: @active_roast_scores[:good], bad_score: @active_roast_scores[:bad] %>
+
+<%= render 'admin/welcome/roasts', report: @sorted_report %>
+
+<div class="row">
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <h2>How To Vote</h2>
+      <p>
+        To vote, visit <%= link_to "Abletech's Slack channel", "https://abletech.slack.com/" %>. To upvote a coffee, use the command <code>/coffee good</code> or <code>/coffee +1</code>. To downvote a coffee use the command <code>/coffee bad</code> or <code>/coffee -1</code>. Your vote will be recorded and the dashboard will be updated. Every time a new batch of coffee is in the kitchen, a notification will be sent to the Coffee-Club-Bot channel.
+      </p>
+    </div>
+  </div>
+</div>
+
+<% else %>
+<%= image_tag 'coffee.png', :class => "center"%>
+<h2 align="center">There are no batches that are currently active.</h2>
+<h2 align="center">Ask Carl to add an active roast.</h2>
+<% end %>

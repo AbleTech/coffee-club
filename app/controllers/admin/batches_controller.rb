@@ -11,7 +11,7 @@ class Admin::BatchesController < Admin::ApplicationController
   def create
     @batch = Batch.new(admin_batch_params)
     if @batch.save
-      redirect_to admin_roast_url(@batch.roast), notice: 'Batch was successfully created.'
+      redirect_to admin_root_url, notice: 'Batch was successfully created.'
     else
       render :new
     end
@@ -22,7 +22,7 @@ class Admin::BatchesController < Admin::ApplicationController
 
   def update
     if @batch.update(admin_batch_params)
-      redirect_to admin_roast_path(@batch.roast), notice: 'Batch was successfully updated.'
+      redirect_to admin_root_url, notice: 'Batch was successfully updated.'
     else
       render :edit
     end
@@ -31,7 +31,7 @@ class Admin::BatchesController < Admin::ApplicationController
   def destroy
     roast = @batch.roast
     @batch.destroy
-    redirect_to admin_roast_path(roast), notice: 'Batch was successfully destroyed.'
+    redirect_to admin_root_url, notice: 'Batch was successfully destroyed.'
   end
 
   private
