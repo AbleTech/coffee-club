@@ -3,7 +3,7 @@ class VotesController < WelcomeController
 
   def create
     @vote = Vote.new({
-      voted_at: Date.today.beginning_of_day,
+      voted_at: Time.zone.today.beginning_of_day,
       user_text: vote_params[:text].downcase,
       rating: calculate_rating(vote_params[:text].downcase)
     })

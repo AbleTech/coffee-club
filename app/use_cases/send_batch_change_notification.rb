@@ -25,6 +25,6 @@ class SendBatchChangeNotification
   private
 
   def starts_at_is_today(starts_at)
-    starts_at == Date.today.beginning_of_day
+    starts_at == Time.zone.today.beginning_of_day
   end
 end
