@@ -17,7 +17,7 @@ class Batch < ApplicationRecord
 
   def date_must_not_be_in_future
     unless starts_at.nil?
-      if starts_at > Date.today
+      if starts_at > Date.current.in_time_zone
         errors.add(:starts_at, "can't be in the future")
       end
     end
