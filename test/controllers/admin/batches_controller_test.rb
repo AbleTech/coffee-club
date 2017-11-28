@@ -6,7 +6,7 @@ class Admin::BatchesControllerTest < ActionDispatch::IntegrationTest
 
     @roast = roasts(:roast1)
     @batch = batches(:batch1)
-    @batch_params = { batch: { starts_at: "2017-11-11 00:00:00", cost: 4.99, amount_purchased: 1, roast_id: @roast.id} }
+    @batch_params = { batch: { starts_at: "2017-11-11", cost: 4.99, amount_purchased: 1, roast_id: @roast.id} }
   end
 
   test "batch authentication requests" do
