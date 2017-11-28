@@ -3,7 +3,7 @@ class Admin::BatchesController < Admin::ApplicationController
   before_action :get_all_roasts
 
   def new
-    @batch = Batch.new(:starts_at => Time.zone.today)
+    @batch = Batch.new(:starts_at => Date.today)
     selected_roast = Roast.find_by_id(params[:roast])
     @batch.roast = selected_roast unless !selected_roast
   end
