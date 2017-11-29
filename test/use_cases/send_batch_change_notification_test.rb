@@ -3,7 +3,7 @@ require 'net/http'
 
 describe SendBatchChangeNotification do
   let(:roast){ Roast.new({ company: "People's", description: "Nice", name: "Coffee"}) }
-  let(:batch){ Batch.new({ starts_at: Date.today, cost: 4.99, amount_purchased: 1, roast: roast}) }
+  let(:batch){ Batch.new({ starts_at: Date.current, cost: 4.99, amount_purchased: 1, roast: roast}) }
   let(:uri){ URI(ENV['SLACK_URL']) }
   let(:slack_message){ ":coffee: A new batch of coffee is available in the kitchen! :coffee:"\
     "\nThe new roast is *#{batch.roast.company} #{batch.roast.name}*."\
