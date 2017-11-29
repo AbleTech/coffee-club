@@ -53,6 +53,24 @@ class BatchTest < ActiveSupport::TestCase
     assert @batch.invalid?
   end
 
+  test 'batch is valid when it is yesterday after 11AM UTC' do
+    travel_to Time.utc(2016,12,27,22,00,00) # 10PM UTC, 11AM Wellington the next day
+    @batch.starts_at = "2016-12-28"
+    assert @batch.valid?
+  end
+
+  test 'batch is valid when it is yesterday at 11AM UTC' do
+    travel_to Time.utc(2016,12,27,11,00,00) # 11AM UTC, 12AM Wellington the next day
+    @batch.starts_at = "2016-12-28"
+    assert @batch.valid?
+  end
+
+  test 'batch is not valid when it is yesterday before 11AM UTC' do
+   travel_to Time.utc(2016,12,27,10,59,59) # 11AM UTC, 11:59PM Wellington the same day
+   @batch.starts_at = "2016-12-28"
+   assert @batch.invalid?
+ end
+
   test 'amount_purchased cannot be negative' do
     @batch.amount_purchased = -45
 
