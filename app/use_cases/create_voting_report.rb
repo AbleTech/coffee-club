@@ -11,7 +11,7 @@ class CreateVotingReport
   def perform
     batches.push(nil).each_cons(2) do |(current_batch, next_batch)|
       start_date = current_batch.starts_at.to_date
-      end_date = next_batch ? next_batch.starts_at.prev_day.to_date : Date.today
+      end_date = next_batch ? next_batch.starts_at.prev_day.to_date : Date.current
 
       ratings_between_dates = votes.reduce([]) do |result, vote|
         if (start_date..end_date).include? vote.voted_at.to_date
